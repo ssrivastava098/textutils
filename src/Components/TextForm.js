@@ -25,16 +25,16 @@ export default function TextForm(props) {
                 <div className="mb-3">
                     <textarea className="form-control"  onChange={onChange} style = {{backgroundColor: props.mode==='dark'?'grey':'light', color: props.mode ==='light'?'black':'white'}} value={text} id="myBox" rows="8"></textarea>
                 </div>
-                <button className="btn btn-primary" onClick={handleUpperCase}>Convert to UpperCase</button>
-                <button className="btn btn-primary mx-2" onClick={handleLowerCase}>Convert to LowerCase </button>
-                <button className="btn btn-primary mx-2" onClick={handleToClear}>Clear </button>
+                <button className="btn btn-primary mx-2 my-2" onClick={handleUpperCase} disabled={text.length===0}>Convert to UpperCase</button>
+                <button className="btn btn-primary mx-2 my-2" onClick={handleLowerCase} disabled={text.length===0}>Convert to LowerCase </button>
+                <button className="btn btn-primary mx-2 my-2" onClick={handleToClear} disabled={text.length===0}>Clear </button>
             </div>
             <div className="container my-3">
                 <h3>Your Text Summary</h3>
                 <p>
-                    It has {text.split(" ").length} words and {text.length} characters
+                    It has {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters
                 </p>
-                <p>{0.008 * text.split(" ").length} minutes worth of read</p>
+                <p>{0.008 * text.split(/\s+/).filter((element)=>{return element.length!==0}).length} minutes worth of read</p>
                 <h3>Preview</h3>
                 <p>{text}</p>
             </div>

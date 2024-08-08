@@ -1,30 +1,39 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function About() {
-    const [myStyle, setmyStyle] = useState({
-        color:'black',
-        backgroundColor: 'white'
-    });
-    const [btnstyle, setBtnStyle] = useState('btn btn-dark')
-    const [Text, setText] = useState("Dark")
-    const toggleFunc = () => {
-        if (myStyle.color === 'white') {
-            setmyStyle({
-                color: 'black',
-                backgroundColor: 'white'
-            });
-            setBtnStyle("btn btn-dark");
-            setText("Dark");
-        }
-        else {
-            setmyStyle({
-                color: 'white',
-                backgroundColor: 'black'
-            });
-            setBtnStyle("btn btn-light");
-            setText("Light");
-        }
-    };
+export default function About(props) {
+    let myStyle = {
+        color:props.mode==='dark'?'white':'black',
+        backgroundColor: props.mode==='dark'?'black':'white'
+    }
+
+
+
+
+    //This all was used for learning to put a Dark Mode Button but now need to integrate it with the Home Dark_Mode_Slider
+    // const [myStyle, setmyStyle] = useState({
+    //     color:'black',
+    //     backgroundColor: 'white'
+    // });
+    // const [btnstyle, setBtnStyle] = useState('btn btn-dark')
+    // const [Text, setText] = useState("Dark")
+    // const toggleFunc = () => {
+    //     if (myStyle.color === 'white') {
+    //         setmyStyle({
+    //             color: 'black',
+    //             backgroundColor: 'white'
+    //         });
+    //         setBtnStyle("btn btn-dark");
+    //         setText("Dark");
+    //     }
+    //     else {
+    //         setmyStyle({
+    //             color: 'white',
+    //             backgroundColor: 'black'
+    //         });
+    //         setBtnStyle("btn btn-light");
+    //         setText("Light");
+    //     }
+    // };
 
   return (
       <div className='container' style = {myStyle}>
@@ -67,7 +76,8 @@ export default function About() {
                   </div>
               </div>
           </div>
-          <button type="button" className={btnstyle} onClick={toggleFunc}>{Text}</button>
+          {/* <button type="button" className={btnstyle} onClick={toggleFunc}>{Text}</button> */}
+          {/* NoRequirement of the button here now */}
       </div>
   )
 }
